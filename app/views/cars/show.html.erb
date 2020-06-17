@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%= image_tag(@car.thumbnail) if @car.thumbnail.attached? %>
+<%= image_tag(@car.resized_thumbnail) if @car.thumbnail.attached? %>
 <p>
   <strong>Title:</strong>
   <%= @car.title %>
@@ -18,7 +18,7 @@
 <p>
   <strong>Make:</strong>
   <% @car.makes.each do |make| %>
-  <%= link_to make.name, cars_path(make: make.name) %>
+      <%= link_to make.name, cars_path(make: make.name) %>
   <% end %>
 </p>
 
@@ -45,7 +45,7 @@
 <p>
   <strong>State:</strong>
   <% @car.states.each do |state| %>
-  <%= link_to state.state, cars_path(state: state.state) %>
+      <%= link_to state.state, cars_path(state: state.state) %>
   <% end %>
 </p>
 

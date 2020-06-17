@@ -1,29 +1,32 @@
 <div class="search-container">
-    <%= form_tag(cars_search_path, remote: true) do %>
-    <div class="field">
+  <%= form_tag(cars_search_path, remote: true) do %>
+      <div class="field">
         <%= label_tag :make, "Make: " %>
 
         <%= select_tag :make, options_from_collection_for_select(
             @makes.to_a.unshift(Make.new(id: 0, name: "All")),
             "name",
             "name",
-            "0") %>
-    
+            "0"), prompt: "Select Makes" %>
+
         <%= label_tag :order, "Order" %>
         <%= select_tag :order, options_for_select([
-        "A-Z",
-        "Z-A",
-        "Highest Priced First",
-        "Lowest Priced First",
-        "Newest First",
-        "Oldest First"
-    ]), {include_blank: "Order"} %>
+                                                      "A-Z",
+                                                      "Z-A",
+                                                      "Highest Priced First",
+                                                      "Lowest Priced First",
+                                                      "Newest First",
+                                                      "Oldest First"
+                                                  ]), {include_blank: "Order"} %>
+
+        <%= select_tag :state, options_for_select(["All"] + State.all.map{|c| [c.state]}) %>
+
         <%= submit_tag "Search" %>
-    </div>
-    <% end %>
+      </div>
+  <% end %>
 </div>
 
 
 <div id="makes">
-    <%= render 'cars/makes' %>
+  <%= render 'cars/makes' %>
 </div>
