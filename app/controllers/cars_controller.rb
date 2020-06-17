@@ -39,7 +39,7 @@ class CarsController < ApplicationController
   def update
     respond_to do |format|
       if @car.update(car_params)
-        format.html { redirect_to @car, notice: 'Car was successfully updated.' }
+        format.html { redirect_to cars_path, notice: 'Car was successfully updated.' }
         format.json { render :show, status: :ok, location: @car }
       else
         format.html { render :edit }
@@ -69,7 +69,7 @@ class CarsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def car_params
-    params.require(:car).permit(:title, :description, :price, :model, :year, :color, :miles, make_ids: [], state_ids: [])
+    params.require(:car).permit(:title, :description, :feature, :price, :model, :year, :color, :miles, make_ids: [], state_ids: [])
   end
 
   def set_cars_and_make_with_criteria(requested_make, requested_order)
@@ -98,10 +98,10 @@ class CarsController < ApplicationController
                _cars.order('title ASC')
              when 'Z-A'
                _cars.order('title DESC')
-             when 'Highest Rating First'
-               _cars.order('rating DESC')
-             when 'Lowest Rating First'
-               _cars.order('rating ASC')
+             when 'Highest Priced First'
+               _cars.order('price DESC')
+             when 'Lowest Priced First'
+               _cars.order('price ASC')
              when 'Newest First'
                _cars.order('created_at DESC')
              when 'Oldest First'

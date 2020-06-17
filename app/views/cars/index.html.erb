@@ -12,8 +12,8 @@
         <%= select_tag :order, options_for_select([
         "A-Z",
         "Z-A",
-        "Highest Rating First",
-        "Lowest Rating First",
+        "Highest Priced First",
+        "Lowest Priced First",
         "Newest First",
         "Oldest First"
     ]), {include_blank: "Order"} %>
@@ -25,4 +25,8 @@
 
 <div id="makes">
     <%= render 'cars/makes' %>
+</div>
+
+<div id="makes">
+    <%= render 'cars/feature' %>
 </div>
