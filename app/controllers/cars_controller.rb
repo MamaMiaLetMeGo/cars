@@ -7,12 +7,10 @@ class CarsController < ApplicationController
   
   def index
     set_cars_and_make_with_criteria(params[:make], '')
-    set_cars_and_state_with_criteria(params[:state], '')
   end
 
   def search
     set_cars_and_make_with_criteria(params[:make], params[:order])
-    set_cars_and_state_with_criteria(params[:state], params[:order])
   end
 
 
@@ -95,26 +93,6 @@ class CarsController < ApplicationController
               Car.none
             else
               @make.cars
-    end
-  end
-
-  def set_cars_and_state_with_criteria(requested_state, requested_order)
-    if requested_state.nil? || requested_state.eql?('All')
-      cars_by_state = Car.all
-      @state_state = 'All'
-    else
-      cars_by_state = filter_cars_by_state(requested_state)
-      @state_state = requested_state
-    end
-    order_cars(requested_order, cars_by_state)
-  end
-
-  def filter_cars_by_state(state_state)
-    @state = State.find_by(state: state_state)
-    cars = if @state.nil?
-              Car.none
-            else
-              @state.cars
     end
   end
 
