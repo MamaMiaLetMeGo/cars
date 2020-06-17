@@ -8,6 +8,14 @@
             "name",
             "name",
             "0") %>
+    <%= form_tag(cars_search_path, remote: true) do %>
+        <%= label_tag :state, "State: " %>
+
+        <%= select_tag :state, options_from_collection_for_select(
+            @states.to_a.unshift(State.new(id: 0, state: "All")),
+            "state",
+            "state",
+            "0") %>
         <%= label_tag :order, "Order" %>
         <%= select_tag :order, options_for_select([
         "A-Z",
@@ -20,13 +28,10 @@
         <%= submit_tag "Search" %>
     </div>
     <% end %>
+    <% end %>
 </div>
 
 
 <div id="makes">
     <%= render 'cars/makes' %>
-</div>
-
-<div id="makes">
-    <%= render 'cars/feature' %>
 </div>

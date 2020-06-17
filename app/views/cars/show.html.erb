@@ -42,5 +42,12 @@
   <%= @car.miles %>
 </p>
 
+<p>
+  <strong>State:</strong>
+  <% @car.states.each do |state| %>
+  <%= link_to state.state, cars_path(state: state.state) %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_car_path(@car) %> |
 <%= link_to 'Back', cars_path %>
