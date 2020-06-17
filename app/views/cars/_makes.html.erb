@@ -1,0 +1,12 @@
+<h1><%= link_to @make_name, root_path %></h1>
+<div id="cars">
+    <% @cars.each do |car| %>
+    <% if car.thumbnail.attached? %>
+    <%= link_to image_tag(car.resized_thumbnail), car %>
+    <% else %>
+    <div style="width: 240px; height: 135px">
+        <%= link_to car.title, car %>
+    </div>
+    <% end %>
+    <% end %>
+</div>

@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+<%= image_tag(@car.thumbnail) if @car.thumbnail.attached? %>
+<p>
+  <strong>Title:</strong>
+  <%= @car.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @car.description %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @car.model %>
+</p>
+
+<p>
+  <strong>Make:</strong>
+  <% @car.makes.each do |make| %>
+  <%= link_to make.name, cars_path(make: make.name) %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @car.price %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @car.year %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @car.color %>
+</p>
+
+<p>
+  <strong>Miles:</strong>
+  <%= @car.miles %>
+</p>
+
+<%= link_to 'Edit', edit_car_path(@car) %> |
+<%= link_to 'Back', cars_path %>
