@@ -2,7 +2,7 @@
 <div id="cars">
     <% @cars.each do |car| %>
     <% if car.thumbnail.attached? %>
-    <%= link_to image_tag(car.resized_thumbnail), car %>
+    <%= link_to image_tag(car.resized_thumbnail), car_path(car, make: @make_name, order: @order) %>
     <% else %>
     <div style="width: 240px; height: 135px">
         <%= link_to car.title, car %>

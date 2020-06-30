@@ -1,6 +1,6 @@
 class TransmissionsController < ApplicationController
   before_action :set_transmission, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_admin!
   # GET /transmissions
   # GET /transmissions.json
   def index

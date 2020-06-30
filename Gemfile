@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
+gem 'acts_as_votable'
 gem 'devise'
 gem 'simple_form'
 

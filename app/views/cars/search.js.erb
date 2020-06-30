@@ -1,4 +1,4 @@
 var makes = document.getElementById("makes");
 var cars = document.getElementById("cars")
-
+window.history.replaceState(null, null, "?make=<%= @make_name %>?order=<%= @order%>");
 makes.innerHTML = "<%= j render 'cars/makes' %>";

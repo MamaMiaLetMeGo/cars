@@ -1,5 +1,62 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <%= image_tag(@car.thumbnail, class:'img-fluid') if @car.thumbnail.attached? %>
+            <div class="row">
+                <div class="col-12">
+                    <h4>
+                        Are You Interested?
+                    </h4>
+                </div>
+                <div class="col-12">
+                    <h5>
+                        <div id="like-count">
+                            <%= render 'cars/likes', car: @car %>
+                        </div>
+                        <div id="like-link">
+                            <%= render 'cars/like_link', car: @car %>
+                        </div>
+                        <hr />
+                    </h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h6>
+                        Message Owner
+                    </h6>
+                </div>
+                <% @car.makes.each do |make| %>
+                <div class="col-6">
+                    <%= link_to make.name, root_path(make: make.name) %>
+                </div>
+                <% end %>
+                <div class="col-12">
+                    <% if current_user&.admin %>
+                    <div class="btn-group">
+                        <%= link_to 'Edit', edit_car_path(@car), class: 'btn btn-warning' %>
+                        <%= link_to 'Delete', @car, method: :delete, class: 'btn btn-danger' %>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <h1>
+                <% if params[:make].nil? %>
+                <%= link_to @car.title, root_path %>
+                <% else %>
+                <%= link_to @car.title, root_path(make: params[:make], order: params[:order]) %>
+                <% end %>
+            </h1>
+            <div class="container">
+                <%= @car.description %>
+            </div>
+        </div>
+    </div>
+</div>
 <p id="notice"><%= notice %></p>
-<%= image_tag(@car.thumbnail) if @car.thumbnail.attached? %>
+<%= image_tag(@car.resized_thumbnail) if @car.thumbnail.attached? %>
 <p>
   <strong>Title:</strong>
   <%= @car.title %>
