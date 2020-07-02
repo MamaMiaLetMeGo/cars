@@ -55,6 +55,11 @@
         </div>
     </div>
 </div>
+<div class="container">
+  <% (0...@car.images.count).each do |image| %>
+                    <%= image_tag(@car.manyimage(image)) %>
+                    <% end %>
+</div>
 <p id="notice"><%= notice %></p>
 <%= image_tag(@car.resized_thumbnail) if @car.thumbnail.attached? %>
 <p>
