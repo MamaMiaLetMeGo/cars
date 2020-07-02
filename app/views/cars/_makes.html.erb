@@ -2,11 +2,19 @@
 <div id="cars">
     <% @cars.each do |car| %>
     <% if car.thumbnail.attached? %>
-    <%= link_to image_tag(car.resized_thumbnail), car_path(car, make: @make_name, order: @order) %>
-    <% else %>
-    <div style="width: 240px; height: 135px">
-        <%= link_to car.title, car %>
+    <div class="item">
+        <%= link_to image_tag(car.resized_thumbnail), car_path(car, make: @make_name, order: @order) %>
+        <span class="caption">
+        <%= link_to car.title, car %><p>
+        Color: <%= link_to car.color, car %> ft / 
+        Price: $<%= link_to car.price, car %>
+        Year: <%= link_to car.year, car %>
+        State: <% car.states %>
+        <% else %>
+        <div style="width: 240px; height: 135px">
+            <%= link_to car.title, car %>
+        </div>
+        <% end %>
     </div>
-    <% end %>
     <% end %>
 </div>
