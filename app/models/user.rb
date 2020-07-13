@@ -8,4 +8,10 @@ class User < ApplicationRecord
   def username
     email.split('@')[0].capitalize
   end
+
+  def to_s
+    email
+  end
+
+  has_many :cars
 end

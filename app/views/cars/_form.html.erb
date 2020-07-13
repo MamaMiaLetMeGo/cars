@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_with(model: car, local: true) do |form| %>
+  <%= simple_form_for(@car) do |f| %>
     <% if car.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
@@ -13,68 +13,57 @@
     <% end %>
 
     <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title %>
+      <%= f.input :title, :input_html => {:style=> 'width: 700px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :description %>
-      <%= form.text_area :description, :rows => "10" %>
+      <%= f.input :description, as: :rich_text_area %>
     </div>
 
     <div class="field">
-      <%= form.label :make %>
-      <%= form.collection_select :make_ids, Make.all, :id, :name, {}, {multiple:true} %>
+      <%= f.collection_select :make_ids, Make.all, :id, :name, {}, {multiple:true} %>
     </div>
 
     <div class="field">
-      <%= form.label :model %>
-      <%= form.text_field :model %>
+      <%= f.input :model, :input_html => {:style=> 'width: 700px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :price %>
-      <%= form.number_field :price %>
+      <%= f.input :price, :input_html => {:style=> 'width: 700px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :year %>
-      <%= form.number_field :year %>
+      <%= f.input :year, :input_html => {:style=> 'width: 700px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :color %>
-      <%= form.text_field :color %>
+      <%= f.input :color, :input_html => {:style=> 'width: 700px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :miles %>
-      <%= form.number_field :miles %>
+      <%= f.input :miles, :input_html => {:style=> 'width: 700px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :state %>
-      <%= form.collection_select :state_ids, State.all, :id, :state, {}, {multiple:true} %>
+      <%= f.collection_select :state_ids, State.all, :id, :state, {}, {multiple:true} %>
     </div>
 
     <div class="field">
-      <%= form.label :thumbnail %>
-      <%= form.file_field :thumbnail %>
+      <%= f.file_field :thumbnail %>
     </div>
 
     <div class="field">
-      <%= form.label :images %>
-      <%= form.file_field :images, multiple: true %>
+      <%= f.file_field :images, multiple: true %>
     </div>
 
     <div class="field">
       <%= "Feature Car?" %>
-      <%= form.check_box :feature %>
+      <%= f.check_box :feature %>
       <%= "($25)" %>
     </div>
 
     <div class="actions">
-      <%= form.submit %>
+      <%= f.submit %>
     </div>
   <% end %>
 </div>

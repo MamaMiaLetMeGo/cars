@@ -4,14 +4,16 @@
     <title>Carlistings</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <%= stylesheet_link_tag 'app', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= render 'layouts/navbar' %>
+    <%= render 'layouts/alerts'%>
     <%= yield %>
+    <br>
     <%= render 'layouts/footer' %>
   </body>
 </html>

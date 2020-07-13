@@ -26,18 +26,20 @@
                        <button type="button" class="btn btn-outline-primary">Message Owner</button>
                     </h6>
                 </div>
-                <% @car.makes.each do |make| %>
                 <div class="col-6">
-                    <%= link_to make.name, root_path(make: make.name) %>
                 </div>
-                <% end %>
                 <div class="col-12">
-                    <% if current_user&.admin %>
-                    <div class="btn-group">
-                        <%= link_to 'Edit', edit_car_path(@car), class: 'btn btn-warning' %>
-                        <%= link_to 'Delete', @car, method: :delete, class: 'btn btn-danger' %>
-                    </div>
-                    <% end %>
+                  <% if current_user&.admin %>
+                  <div class="btn-group">
+                      <%= link_to 'Edit', edit_car_path(@car), class: 'btn btn-warning' %>
+                      <%= link_to 'Delete', @car, method: :delete, class: 'btn btn-danger' %>
+                  </div>
+                  <% end %>
+                  <p>
+                  <h4>Car's Location</h4>
+                  <strong>State:</strong> <% @car.states.each do |state| %>
+                  <%= link_to state.state, root_path(state: state.state) %>
+                  <% end %>
                 </div>
             </div>
         </div>
@@ -78,88 +80,17 @@
                     </body>
                   </table>
                 </div>
-
-                <div class="table-responsive-md">
-                  <table class="table">
-                    <th scope="col">State</th>
-                    <th scope="col">Example</th>
-                    <th scope="col">Example</th>
-                    <th scope="col">Example</th>
-                    <th scope="col">Example</th>
-                    <th scope="col">Example</th>
-                  </table>
-                </div>
-
-                <div class="table-responsive-lg">
-                  <table class="table">
-                    ...
-                  </table>
-                </div>
-
-                <div class="table-responsive-xl">
-                  <table class="table">
-                    ...
-                  </table>
-                </div>
             </div>
         </div>
     </div>
 </div>
+<p>
 <div class="container">
+  <h3>Photos</h3>
   <% (0...@car.images.count).each do |image| %>
                     <%= image_tag(@car.manyimage(image)) %>
                     <% end %>
 </div>
-<p id="notice"><%= notice %></p>
-<%= image_tag(@car.resized_thumbnail) if @car.thumbnail.attached? %>
-<p>
-  <strong>Title:</strong>
-  <%= @car.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @car.description %>
-</p>
-
-<p>
-  <strong>Model:</strong>
-  <%= @car.model %>
-</p>
-
-<p>
-  <strong>Make:</strong>
-  <% @car.makes.each do |make| %>
-  <%= link_to make.name, cars_path(make: make.name) %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @car.price %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @car.year %>
-</p>
-
-<p>
-  <strong>Color:</strong>
-  <%= @car.color %>
-</p>
-
-<p>
-  <strong>Miles:</strong>
-  <%= @car.miles %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <% @car.states.each do |state| %>
-  <%= link_to state.state, cars_path(state: state.state) %>
-  <% end %>
-</p>
 
 <%= link_to 'Edit', edit_car_path(@car) %> |
 <%= link_to 'Back', cars_path %>

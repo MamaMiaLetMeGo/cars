@@ -1,10 +1,14 @@
 @import "cars.scss";
 @import "makes.scss";
 @import "states.scss";
-@import "actiontext.scss";
+@import "./actiontext.scss";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import 'bootstrap/dist/css/bootstrap';
+
+//hide simple_form checkmarks
+.form-control.is-invalid{ background-image: none; }
+.form-control.is-valid{ background-image: none; }
 
 .fixed-top {
   position: fixed;

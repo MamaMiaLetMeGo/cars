@@ -4,7 +4,7 @@ class CarsController < ApplicationController
   before_action :set_car, only: %i[show edit update destroy like]
   before_action :set_makes, except: %i[show destroy]
   before_action :is_admin!, except: [:index, :show, :edit, :update, :like]
-  before_action :authenticate_user!, only: [:like]
+  before_action :authenticate_user!, except: [:show, :index]
 
 
   def index
@@ -26,6 +26,7 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
+    @car.user = current_user
 
     respond_to do |format|
       if @car.save

@@ -2,11 +2,12 @@ class Car < ApplicationRecord
   has_and_belongs_to_many :makes
   has_and_belongs_to_many :states
   has_and_belongs_to_many :transmissions
+  belongs_to :user
   has_one_attached :thumbnail
   has_many_attached :images
   has_rich_text :description
   validates :title, presence: true
-  validates :description, presence: true
+  validates :description, presence: false
   validate :image_type
   acts_as_votable
 
