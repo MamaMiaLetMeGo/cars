@@ -1,4 +1,5 @@
 # README
+3 Fixes needed!
 Fix: 1
 Within _form.html.erb (car views), I need to fix f.input :description, as: :rich_text_area because the rich text editor does not show on the show.html.erb.
 
