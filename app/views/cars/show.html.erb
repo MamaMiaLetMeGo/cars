@@ -37,8 +37,9 @@
                   <% end %>
                   <p>
                   <h4>Car's Location</h4>
-                  <strong>State:</strong> <% @car.states.each do |state| %>
-                  <%= link_to state.state, root_path(state: state.state) %>
+                  <strong>State:</strong>
+                  <% @car.states.each do |state| %>
+                    <%= link_to state.state, root_path(state: state.state) %>
                   <% end %>
                 </div>
             </div>
