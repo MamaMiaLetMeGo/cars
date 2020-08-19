@@ -17,11 +17,17 @@
     </div>
 
     <div class="field">
-      <%= f.input :description, as: :rich_text_area %>
+      <div class="form-group car_make_ids">
+        <label class="" for="car_description">Description</label><br>
+        <%= f.cktext_area :description %>
+      </div>
     </div>
 
     <div class="field">
-      <%= f.collection_select :make_ids, Make.all, :id, :name, {}, {multiple:true} %>
+      <div class="form-group car_make_ids">
+        <label class="" for="car_make_ids">Select Makes</label><br>
+        <%= f.collection_select :make_ids, Make.all, :id, :name, {}, {multiple:true, class: "select2", :style=> 'width: 700px'} %>
+      </div>
     </div>
 
     <div class="field">
@@ -45,7 +51,10 @@
     </div>
 
     <div class="field">
-      <%= f.collection_select :state_ids, State.all, :id, :state, {}, {multiple:true} %>
+      <div class="form-group car_state_ids">
+        <label class="" for="car_state_ids">Select State</label><br>
+        <%= f.collection_select :state_ids, State.all, :id, :state, {}, {multiple:true, class: "select2", :style=> 'width: 700px'} %>
+      </div>
     </div>
 
     <div class="field">

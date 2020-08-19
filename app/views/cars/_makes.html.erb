@@ -10,7 +10,9 @@
             Color: <%= link_to car.color, car %> 
             Price: $<%= link_to car.price, car %><br>
             Year: <%= link_to car.year, car %>
-            State: <% car.states %>
+            State: <% car.states.each do |state| %>
+                    <%= link_to state.state, root_path(state: state.state) %>
+                  <% end %>
             <% else %>
             <div style="width: 240px; height: 135px">
                 <%= link_to car.title, car %>

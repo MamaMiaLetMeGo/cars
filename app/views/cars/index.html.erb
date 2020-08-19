@@ -8,7 +8,7 @@
             "name",
             "name",
             "0") %>
-        <%= label_tag :state, "State: " %>   
+        <%= label_tag :state, "State: " %>
         <%= select_tag :state, options_for_select(["All"] + State.all.map{|c| [c.state]}) %>
 
         <%= label_tag :order, "Order" %>

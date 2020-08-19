@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/galetahub/ckeditor.git
+  revision: f9e48420ccb6dc99f4453397554a6ae60bc2274b
+  specs:
+    ckeditor (5.1.0)
+      orm_adapter (~> 0.5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -227,6 +234,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  ckeditor!
   devise
   font-awesome-sass (~> 5.13.0)
   image_processing (~> 1.2)
